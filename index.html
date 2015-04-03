@@ -4,7 +4,7 @@
   ================================================== -->
 <meta charset="utf-8">
 <title>Configure Ripples</title>
-<meta name="description" content="configuration page for Ripples, a Pebble watchface">
+<meta name="description" content="configuration page for Monarch, a Pebble watchface">
 <meta name="author" content="Nev Rawlins">
 <!-- Mobile Specific Metas
   ================================================== -->
@@ -17,34 +17,56 @@
 	================================================== -->
 <div class="container">
 	<header>
-		<h1>Configure Ripples</h1>
+		<h1>Configure Monarch</h1>
 	</header>
 		
 	<div id="info" class="bg-info" style="padding:0.75em">
-			<p>Default is black background with white ripples.</p>
-		<p>Tick boxes to select white background with black ripples and whether background ripples should be displayed.
+			<p>Default is ...... .</p>
+		<p>Tick boxes to select options.
 			</p>
                 <p></p>
 		</div>
 	
 	<form id="config" role="form" class="input-lg">
 		<fieldset>
-			<legend>Colors:</legend>
+			<legend>12 or 24 hour mode:</legend>
 			<div class="checkbox">
 			<label>
-				<input type="checkbox" name="invert" value="on">
-						White background
+				<input type="checkbox" name="hours_24" value="on">
+						24 hour mode (default 12 hour mode)
 			</label>
 		</div>
   		</fieldset>
                 <p> </p>     
 	
 		<fieldset>
-			<legend>Hide background:</legend>
+			<legend>Hide battery:</legend>
 			<div class="checkbox">
 			<label>
-				<input type="checkbox" name="background" value="on">
-						Remove background ripples 
+				<input type="checkbox" name="battery" value="on">
+						Hide battery 
+			</label>
+			</div>
+		</fieldset>
+                <p> </p>     
+	
+		<fieldset>
+			<legend>Stop annimation on shake:</legend>
+			<div class="checkbox">
+			<label>
+				<input type="checkbox" name="shake_anim" value="on">
+						No animation on shake 
+			</label>
+			</div>
+		</fieldset>
+                <p> </p>     
+
+		<fieldset>
+			<legend>Stop vibration:</legend>
+			<div class="checkbox">
+			<label>
+				<input type="checkbox" name="vibe" value="on">
+						No vibration  
 			</label>
 			</div>
 		</fieldset>
@@ -64,31 +86,35 @@
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script>
 		var LATEST = "1.0";
-
 		function saveOptions() {
 			var params = {};
 			$('#config').serializeArray().forEach(function(pair) {
 				params[pair.name] = pair.value;
 			});
-
 			var options = {
-				invert:	params.invert === 'on',
-				background:	params.background === 'on'
+				24_hour:	params.24_hour === 'on',
+				battery:	params.battery === 'on'
+				shake:		params.shake === 'on',
+				vibe:		params.vibe === 'on'
 			}
 			return options;
 		}
-
 		function applyOptions() {
 			var $form	= $('#config');
 			var opts	= JSON.parse(getParam('options'));
-			if (opts && opts.invert) {
-				$form.find('[name="invert"]').prop('checked', true);
+			if (opts && opts.24_hour) {
+				$form.find('[name="24_hour"]').prop('checked', true);
 			}
-			if (opts && opts.background) {
-				$form.find('[name="background"]').prop('checked', true);
+			if (opts && opts.battery) {
+				$form.find('[name="battery"]').prop('checked', true);
+			}
+			if (opts && opts.shake) {
+				$form.find('[name="shake"]').prop('checked', true);
+			}
+			if (opts && opts.vibe) {
+				$form.find('[name="vibe"]').prop('checked', true);
 			}
 		}
-
 		function getParam(key) {
 			var params = window.location.hash;
 			var val;
@@ -99,19 +125,16 @@
 			});
 			return val;
 		}
-
 		function parseVersion(verStr) {
 			var parts = verStr.split('.');
 			return parts.reduce(function(sum, part) {
 				return (sum * 1000) + parseInt(part, 10);
 			}, 0);
 		}
-
 		$("#b-submit").click(function() {
 			var location = "pebblejs://close#" + encodeURIComponent(JSON.stringify(saveOptions()));
 			document.location = location;
 		});
-
 		var version = getParam('v');
 		if (!version || (parseVersion(version) < parseVersion(LATEST))) {
 			$('#update-available').removeClass('hidden');
@@ -119,9 +142,9 @@
 		else {
 			$('#up-to-date').removeClass('hidden');
 		}
-
 		applyOptions();
    </script>
 
-</body></html>
-
+</body>
+	
+</html>
