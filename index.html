@@ -75,17 +75,11 @@
 
 		<fieldset>
 			<legend>Hour to start sleep time for vibe:</legend>
-                                $(function(){
-                                    var $select = $(".20-24");
-                                    for (i=20;i<=24;i++){
-                                        $select.append($('<option></option>').val(i).html(i))
-                                    }
-                                });
+                        <div>
+                            <input id="start_sleep" type="number" value="20" min="18" max="24" step="1" />
+                        </div>
 		</fieldset>
                 <p> </p>     
-
-
-
 
 	<fieldset>
 		<a href="pebblejs://close" class="btn btn-lg btn-default" role="button">Cancel</a>
@@ -111,6 +105,7 @@
 				hide_battery:		params.hide_battery === 'on',
 				no_anim_on_shake:	params.no_anim_on_shake === 'on',
 				no_vibe:		params.no_vibe === 'on'
+				start_sleep:		params.start_sleep === 'on'
 			}
 			return options;
 		}
@@ -128,6 +123,9 @@
 			}
 			if (opts && opts.no_vibe) {
 				$form.find('[name="no_vibe"]').prop('checked', true);
+			}
+			if (opts && opts.start_sleep) {
+				$form.find('[name="start_sleep"]').prop('checked', true);
 			}
 		}
 		function getParam(key) {
