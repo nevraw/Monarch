@@ -43,7 +43,7 @@
 			<legend>Battery:</legend>
 			<div class="checkbox">
 			<label>
-				<input type="checkbox" name="battery" value="on">
+				<input type="checkbox" name="hide_battery" value="on">
 						Hide battery 
 			</label>
 			</div>
@@ -54,7 +54,7 @@
 			<legend>Animation on shake:</legend>
 			<div class="checkbox">
 			<label>
-				<input type="checkbox" name="shake_anim" value="on">
+				<input type="checkbox" name="no_anim_on_shake" value="on">
 						No animation on shake 
 			</label>
 			</div>
@@ -65,7 +65,7 @@
 			<legend>Vibration:</legend>
 			<div class="checkbox">
 			<label>
-				<input type="checkbox" name="vibe" value="on">
+				<input type="checkbox" name="no_vibe" value="on">
 						No vibration  
 			</label>
 			</div>
@@ -92,27 +92,27 @@
 				params[pair.name] = pair.value;
 			});
 			var options = {
-				24_hour:	params.24_hour === 'on',
-				battery:	params.battery === 'on'
-				shake:		params.shake === 'on',
-				vibe:		params.vibe === 'on'
+				hour_24:		params.hour_24 === 'on',
+				hide_battery:		params.hide_battery === 'on'
+				no_anim_on_shake:	params.no_anim_on_shake === 'on',
+				no_vibe:		params.no_vibe === 'on'
 			}
 			return options;
 		}
 		function applyOptions() {
 			var $form	= $('#config');
 			var opts	= JSON.parse(getParam('options'));
-			if (opts && opts.24_hour) {
-				$form.find('[name="24_hour"]').prop('checked', true);
+			if (opts && opts.hour_24) {
+				$form.find('[name="hour_24"]').prop('checked', true);
 			}
-			if (opts && opts.battery) {
-				$form.find('[name="battery"]').prop('checked', true);
+			if (opts && opts.hide_battery) {
+				$form.find('[name="hide_battery"]').prop('checked', true);
 			}
-			if (opts && opts.shake) {
-				$form.find('[name="shake"]').prop('checked', true);
+			if (opts && opts.no_anim_on_shake) {
+				$form.find('[name="no_anim_on_shake"]').prop('checked', true);
 			}
-			if (opts && opts.vibe) {
-				$form.find('[name="vibe"]').prop('checked', true);
+			if (opts && opts.no_vibe) {
+				$form.find('[name="no_vibe"]').prop('checked', true);
 			}
 		}
 		function getParam(key) {
