@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- Basic Page Needs
   ================================================== -->
 <meta charset="utf-8">
@@ -20,63 +22,50 @@
 		<h1>Configure Monarch</h1>
 	</header>
 		
-	<div id="info" class="bg-info" style="padding:0.75em">
-			<p></p>
-		<p>Tick boxes to select options.
-			</p>
-                <p></p>
+	<div id="info" class="bg-info"  style="padding:4px">
+		<p>Select option for time mode on Monarch<br></p>
 		</div>
-	
-	<form id="config" role="form" class="input-lg">
-		<fieldset>
-			<legend>12 or 24 hour mode:</legend>
-			<div class="checkbox">
+
+	<form id="config" role="form" class="input-lg" style="padding:10px">
+		<fieldset style="padding:6px">
+			<legend>Time display mode</legend>
+			<div class="radio">
 			<label>
-				<input type="checkbox" name="hour_24" value="on">
-						24 hour mode
+				<input type="radio" name="hour_24" value="on" checked>24-hour mode
+				<input type="radio" name="hour_12" value="off">12-hour mode
 			</label>
 		</div>
   		</fieldset>
-                <p> </p>     
-	
-		<fieldset>
-			<legend>Battery:</legend>
-			<div class="checkbox">
-			<label>
-				<input type="checkbox" name="hide_battery" value="on">
-						Hide battery 
-			</label>
-			</div>
-		</fieldset>
-                <p> </p>     
-	
-		<fieldset>
-			<legend>Animation on shake:</legend>
-			<div class="checkbox">
-			<label>
-				<input type="checkbox" name="no_anim_on_shake" value="on">
-						No animation on shake 
-			</label>
-			</div>
-		</fieldset>
-                <p> </p>     
+                <br><br>     
 
-		<fieldset>
-			<legend>Vibration:</legend>
-			<div class="checkbox">
+		<fieldset style="padding:6px">
+			<legend>Battery</legend>
+			<div class="radio">
 			<label>
-				<input type="checkbox" name="no_vibe" value="on">
-						No vibration  
+				<input type="radio" name="hide_battery" value="off">Show battery 
+				<input type="radio" name="hide_battery" value="on">Hide battery 
 			</label>
 			</div>
 		</fieldset>
-                <p> </p>     
+                <br><br>     
+	
+		<fieldset style="padding:6px">
+			<legend>Action on shake</legend>
+			<div class="radio">
+			<label>
+				<input type="radio" name="no_anim_on_shake" value="off checked">Animation 
+				<input type="radio" name="no_anim_on_shake" value="on">No animation 
+			</label>
+			</div>
+		</fieldset>
+                <br><br>     
 
-	<fieldset>
-		<a href="pebblejs://close" class="btn btn-lg btn-default" role="button">Cancel</a>
-			<button type="button" class="btn btn-lg btn-primary" id="b-submit">Save</button>
-	</fieldset>
-</form>
+		<fieldset style="padding:6px">
+			<a href="pebblejs://close" class="btn btn-lg btn-default" role="button">Cancel</a>
+				<button type="button" class="btn btn-lg btn-primary" id="b-submit">Save</button>
+		</fieldset>
+	</form>
+
 
 	</div><!-- container -->
 
@@ -146,5 +135,4 @@
    </script>
 
 </body>
-	
 </html>
