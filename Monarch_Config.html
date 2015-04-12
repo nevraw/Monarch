@@ -84,8 +84,7 @@
 			var options = {
 				hour_24:		params.hour_24 === 'on',
 				hide_battery:		params.hide_battery === 'on',
-				no_anim_on_shake:	params.no_anim_on_shake === 'on',
-				no_vibe:		params.no_vibe === 'on'
+				no_anim_on_shake:	params.no_anim_on_shake === 'on'
 			}
 			return options;
 		}
@@ -100,9 +99,6 @@
 			}
 			if (opts && opts.no_anim_on_shake) {
 				$form.find('[name="no_anim_on_shake"]').prop('checked', true);
-			}
-			if (opts && opts.no_vibe) {
-				$form.find('[name="no_vibe"]').prop('checked', true);
 			}
 		}
 		function getParam(key) {
