@@ -11,16 +11,35 @@
   <h1 class='title'>Monarch Watchface</h1>
  </div>
 
+
+  <label class="item">
+     Time display
+     <label class="item">
+      <span style="vertical-align:middle">   Digital</span>
+      <input name="digital" value="1" type="radio" class='item-radio' checked>
+     </label>
+     <label class="item">
+      <span style="vertical-align:middle">   Analog</span>
+      <input name="digital" value="0" type="radio" class='item-radio'>
+     </label>
+    </label>
+
+
+
+
+
  <div class="item-container">
   <div class="item-container-header">Configurable items</div>
   <div class="item-container-content">
     <label class='item'>
      Battery
-     <input id='hide_battery' type='radio'>
+     <input name="hide_battery" value="0" type="radio" class='item-radio' checked>   Display battery
+     <input name="hide_battery" value="1" type="radio" class='item-radio'>   Hide battery
     </label>
     <label class='item'>
      Action on shake
-     <input id='no_anim_on_shake' type='radio'>
+     <input name="anim_on_shake" value="0" type="radio" class='item-radio' checked>   Animation
+     <input name="anim_on_shake" value="1" type="radio" class='item-radio'>   No animation
     </label>
     <label class='item'>
      Background Color
