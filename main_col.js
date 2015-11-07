@@ -24,13 +24,13 @@ function buttonHandler() {
 }
 
 // Radio control for hiding battery
-var $digitalValue;
+var $hideBattery;
 $("input[name=hideBattery]").change(function () {
  $hideBattery = parseInt(this.value);
 });
 
 // Radio control for animation on shake
-var $digitalValue;
+var $noAnimOnShake;
 $("input[name=noAnimOnShake]").change(function () {
  $noAnimOnShake = parseInt(this.value);
 });
