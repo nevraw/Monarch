@@ -65,7 +65,7 @@ function loadOptions() {
  
  var $timeColorPicker = $('#timeColorPicker');
  if (localStorage.timeColor) {
-  $minColorPicker[0].value = localStorage.timeColor;
+  $timeColorPicker[0].value = localStorage.timeColor;
  }
  
 } 
