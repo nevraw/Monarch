@@ -78,7 +78,7 @@ function getAndStoreConfigData() {
   hideBattery:   $hideBattery,
   noAnimOnShake: $noAnimOnShake,
   bgColor:       $bgColorPicker.val(),
-  timeColor:     $minColorPicker.val()
+  timeColor:     $timeColorPicker.val()
  };
  
  console.log('Got options: ' + JSON.stringify(options));
