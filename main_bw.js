@@ -35,13 +35,6 @@ $("input[name=noAnimOnShake]").change(function () {
  $noAnimOnShake = parseInt(this.value);
 });
 
-// Radio control for inverting colors
-var $invert;
-$("input[name=$invert]").change(function () {
- $invert = parseInt(this.value);
-});
-
-
 function loadOptions() {
  if (localStorage.hideBattery) {
   $hideBattery = localStorage.hideBattery;
@@ -63,31 +56,34 @@ function loadOptions() {
  }
  $("input[name=noAnimOnShake][value='" + $noAnimOnShake + "']").attr('checked', 'checked');
 
- if (localStorage.invert) {
-  $invert = localStorage.invert;
-//  console.log('localStorage.invert: ' + $invert);
-  // setting radio' value
- } else {
-  $invert = 0;
-//  console.log('localStorage.invert was undefined, now set to: ' + $invert);
- }
- $("input[name=invert][value='" + $invert + "']").attr('checked', 'checked');
+ var $invertCheckbox = $('#invertCheckbox');
 
+ if (localStorage.invert) {
+  $invertCheckbox[0].checked = localStorage.invert === '1';
+ }
+ 
 } 
 
 function getAndStoreConfigData() {
+var $invertCheckbox = $('#invertCheckbox');
+ var $invertValue = 0;
+ if ($invertCheckbox[0].checked) {
+   $invertValue = 1; 
+ }
+
+ console.log('Got options: ' + JSON.stringify(options));
 
  var options = {
   hideBattery:   $hideBattery,
   noAnimOnShake: $noAnimOnShake,
-  invert:        $invert
+  invert:        $invertValue
  };
  
  console.log('Got options: ' + JSON.stringify(options));
 
  localStorage.hideBattery   = $hideBattery;
  localStorage.noAnimOnShake = $noAnimOnShake;
- localStorage.invert        = $invert;
+ localStorage.invert = $invertValue;
 
  return options;
 }
