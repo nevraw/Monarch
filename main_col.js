@@ -57,12 +57,6 @@ function loadOptions() {
  }
  $("input[name=noAnimOnShake][value='" + $noAnimOnShake + "']").attr('checked', 'checked');
 
-
- var $bgColorPicker = $('#bgColorPicker');
- if (localStorage.bgColor) {
-  $bgColorPicker[0].value = localStorage.bgColor;
- }
- 
  var $timeColorPicker = $('#timeColorPicker');
  if (localStorage.timeColor) {
   $timeColorPicker[0].value = localStorage.timeColor;
@@ -71,13 +65,11 @@ function loadOptions() {
 } 
 
 function getAndStoreConfigData() {
- var $bgColorPicker = $('#bgColorPicker');
  var $timeColorPicker = $('#timeColorPicker');
 
  var options = {
   hideBattery:   $hideBattery,
   noAnimOnShake: $noAnimOnShake,
-  bgColor:       $bgColorPicker.val(),
   timeColor:     $timeColorPicker.val()
  };
  
@@ -85,7 +77,6 @@ function getAndStoreConfigData() {
 
  localStorage.hideBattery   = $hideBattery;
  localStorage.noAnimOnShake = $noAnimOnShake;
- localStorage.bgColor       = options.bgColor;
  localStorage.timeColor     = options.timeColor;
 
  return options;
