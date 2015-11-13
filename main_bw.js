@@ -59,7 +59,6 @@ function loadOptions() {
 } 
 
 function getAndStoreConfigData() {
- console.log('Got options: ' + JSON.stringify(options));
 
  var options = {
   hideBattery:   $hideBattery,
