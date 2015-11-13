@@ -56,34 +56,20 @@ function loadOptions() {
  }
  $("input[name=noAnimOnShake][value='" + $noAnimOnShake + "']").attr('checked', 'checked');
 
- var $invertCheckbox = $('#invertCheckbox');
-
- if (localStorage.invert) {
-  $invertCheckbox[0].checked = localStorage.invert === '1';
- }
- 
 } 
 
 function getAndStoreConfigData() {
-var $invertCheckbox = $('#invertCheckbox');
- var $invertValue = 0;
- if ($invertCheckbox[0].checked) {
-   $invertValue = 1; 
- }
-
  console.log('Got options: ' + JSON.stringify(options));
 
  var options = {
   hideBattery:   $hideBattery,
-  noAnimOnShake: $noAnimOnShake,
-  invert:        $invertValue
+  noAnimOnShake: $noAnimOnShake
  };
  
  console.log('Got options: ' + JSON.stringify(options));
 
  localStorage.hideBattery   = $hideBattery;
  localStorage.noAnimOnShake = $noAnimOnShake;
- localStorage.invert = $invertValue;
 
  return options;
 }
